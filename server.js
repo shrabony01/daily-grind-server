@@ -24,3 +24,8 @@ app.get('/contact', (req, res) => {
   const contactPath = path.join(__dirname, 'public', 'contact.html');
   res.sendFile(contactPath);
 });
+
+// Step 6: Start listening for incoming connections
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});

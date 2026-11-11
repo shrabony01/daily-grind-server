@@ -1,28 +1,23 @@
-// Step 1: Import core and third-party dependencies
-const express = require("express");
 
-// path
-const path = require("path");
+import express from ("express");
 
-// Step 2: Create Express application instance
+import path from ("path");
+import {fileURLToPath} from 'url';
+
+const __filename=fileURLToPath(import.meta.url);
+const __dirname=path.dirname(__filename);
+
 const app = express();
-
-// Step 3: Define the port the server 
 const port = 3000;
 
-// Step 4: Route handler for the homepage (GET /)
-// When a user requests http://localhost:3000/, send the index.html file
+
 app.get('/', (req, res) => {
-  // res.sendFile requires an absolute path. 
-  // path.join combines the current folder (__dirname) with 'public' and 'index.html'
-  const homePath = path.join(__dirname, 'public', 'index.html');
-  res.sendFile(homePath);
+    res.sendFile(path.join(__dirname,'public','index.html'));
 });
 
-// Step 5: Route handler for the contact page (GET /contact)
+
 app.get('/contact', (req, res) => {
-  const contactPath = path.join(__dirname, 'public', 'contact.html');
-  res.sendFile(contactPath);
+  res.sendFile(path.join(__dirname,'public','contact.html'));
 });
 
 // Step 6: Start listening for incoming connections
